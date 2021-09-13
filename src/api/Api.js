@@ -28,6 +28,7 @@ export const _Api = (methodType, endPoint, request = '', query = '') => {
 
     }
     catch (err) {
+        console.log("err==>> ", err)
 
 
     }
@@ -36,6 +37,9 @@ export const _Api = (methodType, endPoint, request = '', query = '') => {
 
 
 export const END_POINT = {
+    "LOGIN": { method: 'POST', endPoint: 'login/' },
+    "REGISTER": { method: 'POST', endPoint: 'register/' },
     "GET_PRODUCTS_LIST": { method: 'GET', endPoint: 'products/' },
+    "GET_PRODUCTS_ITEM": { method: 'GET', endPoint: 'product/' },
     "GET_HOME_SLIDER_IMAGES": { method: 'GET', endPoint: 'slider/' }
 }

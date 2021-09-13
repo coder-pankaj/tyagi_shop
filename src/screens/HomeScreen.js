@@ -4,34 +4,24 @@ import ProductCard from '../components/ProductCard'
 import { Col, Row, Container } from 'react-bootstrap'
 import Carousel from "../components/Carousel"
 import { _Api, END_POINT } from '../api/Api'
+import { useSelector, useDispatch } from 'react-redux'
+// import {listProducts, sliderImages} from '../redux/actions/home'
 
 function HomeScreen() {
-    const [products, setProducts] = React.useState([])
-    const [sliderImages, setSliderImages] = React.useState([])
+    const homeState = useSelector(state => state.homeReducer)
+    const sliderState = useSelector(state => state.sliderReducer)
 
-    React.useEffect(() => {
-        _Api(END_POINT.GET_PRODUCTS_LIST.method, END_POINT.GET_PRODUCTS_LIST.endPoint)
-            .then(resp => {
-                const { result } = resp
-                setProducts(result)
-            })
-        _Api(END_POINT.GET_HOME_SLIDER_IMAGES.method, END_POINT.GET_HOME_SLIDER_IMAGES.endPoint)
-            .then(resp => {
-                const { result } = resp
-                setSliderImages(result)
-            })
-
-    }, [])
+    React.useEffect(() => { }, [])
 
     return (
         <>
             <Carousel
-                images={sliderImages}
+                images={sliderState.sliderImages}
             />
             <Container>
                 <Row>
                     {
-                        products.map((item, index) => {
+                        homeState.products.map((item, index) => {
                             return (
 
                                 <Col sm={12} md={6} lg={4} xl={3}>
